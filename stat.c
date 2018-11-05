@@ -7,7 +7,10 @@
 
 int main(){
   DIR* d;
-  d = opendir("dir");
+  printf("Enter directory name: ");
+  char input[256];
+  scanf("%s", input);
+  d = opendir(input);
   struct dirent* entry;
   int i = 0;
   while((entry = readdir(d))){
@@ -22,7 +25,7 @@ int main(){
     entries[i] = entry;
     i++;
   }
-  printf("\nStatistics for directory: %s\n", entries[0] -> d_name);
+  printf("\nStatistics for directory: %s\n", input);
   printf("Total directory size: %d Bytes\n", entries[0] -> d_reclen);
   printf("\nDirectories:\n");
   i = 0;
