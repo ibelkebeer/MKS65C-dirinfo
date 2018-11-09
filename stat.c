@@ -4,6 +4,7 @@
 #include <dirent.h>
 #include <sys/types.h>
 #include <string.h>
+#include <errno.h>
 
 int main(){
   DIR* d;
@@ -13,6 +14,10 @@ int main(){
   d = opendir(input);
   struct dirent* entry;
   int i = 0;
+  if(!(d)){
+    printf("Error: %s\n", strerror(errno));
+    return 0;
+  }
   while((entry = readdir(d))){
     i++;
   }
